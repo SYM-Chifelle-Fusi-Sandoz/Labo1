@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginStart="@dimen/app_horizontal_margin"
-    android:layout_marginEnd="@dimen/app_horizontal_margin"
     android:layout_marginTop="@dimen/app_vertical_margin"
+    android:layout_marginEnd="@dimen/app_horizontal_margin"
     android:layout_marginBottom="@dimen/app_vertical_margin"
     tools:context=".MainActivity">
 
@@ -14,12 +14,12 @@
         android:id="@+id/main_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tint="@color/colorPrimaryDark"
+        android:contentDescription="@string/main_icon_desc"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground"
-        android:contentDescription="@string/main_icon_desc" />
+        app:tint="@color/colorPrimaryDark" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
