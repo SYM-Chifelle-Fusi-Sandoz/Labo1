@@ -12,23 +12,27 @@
 
     <ImageView
         android:id="@+id/main_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="211dp"
+        android:layout_height="185dp"
         android:contentDescription="@string/main_icon_desc"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/relativeLayout"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground"
         app:tint="@color/colorPrimaryDark" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="470dp"
+        android:layout_height="210dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.503">
 
         <TextView
             android:id="@+id/main_email_title"
@@ -42,14 +46,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/main_email_title"
             android:hint="@string/main_email_hint"
-            android:inputType="textEmailAddress" />
+            android:inputType="textNoSuggestions|textEmailAddress" />
 
         <TextView
             android:id="@+id/main_password_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/main_email"
-            android:layout_marginTop="@dimen/app_vertical_separation"
+            android:layout_marginTop="12dp"
             android:text="@string/main_password_hint" />
 
         <EditText
