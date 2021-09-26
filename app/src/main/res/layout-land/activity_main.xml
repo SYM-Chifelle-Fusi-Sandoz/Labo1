@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/main_logo"
-        android:layout_width="211dp"
-        android:layout_height="185dp"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
         android:contentDescription="@string/main_icon_desc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/relativeLayout"
