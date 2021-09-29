@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (emailInput?.contains('@') == false) {
-                val toast = Toast.makeText(applicationContext, "Email invalide", Toast.LENGTH_SHORT)
+                val toast = Toast.makeText(applicationContext, getString(R.string.toast_email_error), Toast.LENGTH_SHORT)
                 toast.show()
             }
         }
