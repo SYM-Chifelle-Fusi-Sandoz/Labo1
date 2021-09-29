@@ -90,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                 alertDialogBuilder.setMessage(getString(R.string.dialog_invalid_credentials_error))
                 alertDialogBuilder.show()
                 return@setOnClickListener
+
             }
         }
     }
