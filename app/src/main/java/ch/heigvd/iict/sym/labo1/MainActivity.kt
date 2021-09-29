@@ -1,5 +1,6 @@
 package ch.heigvd.iict.sym.labo1
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -80,6 +81,16 @@ class MainActivity : AppCompatActivity() {
             if (emailInput?.contains('@') == false) {
                 val toast = Toast.makeText(applicationContext, getString(R.string.toast_email_error), Toast.LENGTH_SHORT)
                 toast.show()
+                return@setOnClickListener
+            }
+            if (!credentials.contains(Pair(emailInput, passwordInput)))
+            {
+                val alertDialogBuilder = AlertDialog.Builder(this)
+                alertDialogBuilder.setTitle(getString(R.string.dialog_invalid_credentials_title))
+                alertDialogBuilder.setMessage(getString(R.string.dialog_invalid_credentials_error))
+                alertDialogBuilder.show()
+                return@setOnClickListener
+
             }
         }
     }

@@ -9,5 +9,7 @@
     <string name="main_create_account">New account</string>
     <string name="main_icon_desc">Application\'s logo</string>
     <string name="toast_email_error">Email is invalid</string>
+    <string name="dialog_invalid_credentials_title">Invalid credentials</string>
+    <string name="dialog_invalid_credentials_error">The credentials you entered are invalid</string>
 
 </resources>
