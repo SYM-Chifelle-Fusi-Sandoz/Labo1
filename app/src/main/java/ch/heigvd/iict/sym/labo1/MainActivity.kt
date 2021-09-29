@@ -1,5 +1,6 @@
 package ch.heigvd.iict.sym.labo1
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -76,14 +77,20 @@ class MainActivity : AppCompatActivity() {
                 // doit être appliqué
                 return@setOnClickListener
             }
-            // Si l'email ou le mot de passe n'est pas vide, on va vérifier si l'email est un email au format valide
-            else if(emailInput?.contains('@') == false)
-            {
-                val toastError = getString(R.string.toast_invalid_email_error)
-                Toast.makeText(applicationContext, toastError, Toast.LENGTH_SHORT).show()
+
+            if (emailInput?.contains('@') == false) {
+                val toast = Toast.makeText(applicationContext, getString(R.string.toast_email_error), Toast.LENGTH_SHORT)
+                toast.show()
                 return@setOnClickListener
             }
-            //TODO à compléter...
+            if (!credentials.contains(Pair(emailInput, passwordInput)))
+            {
+                val alertDialogBuilder = AlertDialog.Builder(this)
+                alertDialogBuilder.setTitle(getString(R.string.dialog_invalid_credentials_title))
+                alertDialogBuilder.setMessage(getString(R.string.dialog_invalid_credentials_error))
+                alertDialogBuilder.show()
+                return@setOnClickListener
+            }
         }
     }
 
