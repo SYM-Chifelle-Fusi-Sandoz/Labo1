@@ -95,7 +95,9 @@ class MainActivity : AppCompatActivity() {
             }
             else
             {
-                val intent = Intent(this, SecondaryActivity::class.java)
+                val intent = Intent(this, SecondaryActivity::class.java).apply {
+                    putExtra("emailInput", emailInput)
+                }
                 startActivity(intent)
             }
         }
