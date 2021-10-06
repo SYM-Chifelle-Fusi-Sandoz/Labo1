@@ -1,5 +1,6 @@
 package ch.heigvd.iict.sym.labo1
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +33,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var newAccount: TextView
 
     val LAUNCH_NEWACCOUNT_ACTIVITY = 1
+
+
+    var launchRegisterActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Intent? = result.data
+            val newEmail = data?.getStringExtra("email")
+            val newPassword = data?.getStringExtra("password")
+            credentials.add(Pair(newEmail, newPassword) as Pair<String, String>)
+            // your operation...
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // l'appel à la méthode onCreate de la super classe est obligatoire
@@ -63,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
         newAccount.setOnClickListener {
             val intent = Intent(this, NewAccountActivity::class.java)
-            startActivityForResult(intent, LAUNCH_NEWACCOUNT_ACTIVITY)
+            launchRegisterActivity.launch(intent)
         }
 
         validateButton.setOnClickListener {
@@ -115,6 +128,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+    /*
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == LAUNCH_NEWACCOUNT_ACTIVITY) {
@@ -128,7 +143,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     } //onActivityResult
-
+    */
 
     // En Kotlin, les variables static ne sont pas tout à fait comme en Java
     // pour des raison de lisibilité du code, les variables et méthodes static
