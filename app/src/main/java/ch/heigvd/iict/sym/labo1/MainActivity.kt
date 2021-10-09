@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
                             )
 
     var launchRegisterActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
+        if (result.resultCode == RESULT_OK) {
             val data: Intent? = result.data
             val newEmail = data?.getStringExtra("email")
             val newPassword = data?.getStringExtra("password")
@@ -84,12 +84,14 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            //Si le format de l'email est invalide, lance le toast avec le message d'erreur
             if (emailInput?.contains('@') == false) {
                 val toast = Toast.makeText(applicationContext, getString(R.string.toast_email_error), Toast.LENGTH_SHORT)
                 toast.show()
                 return@setOnClickListener
             }
 
+            //Si les credentials sont incorrectes on affiche un message d'erreur dans un Dialogue
             if (!credentials.contains(Pair(emailInput, passwordInput)))
             {
                 val alertDialogBuilder = AlertDialog.Builder(this)
@@ -99,6 +101,8 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
 
             }
+
+            //Si les credentials sont valides, on lance la nouvelle activity
             else
             {
                 val intent = Intent(this, SecondaryActivity::class.java).apply {
