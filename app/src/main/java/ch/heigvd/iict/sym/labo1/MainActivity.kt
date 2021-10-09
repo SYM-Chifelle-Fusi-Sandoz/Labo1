@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,24 +25,12 @@ class MainActivity : AppCompatActivity() {
                                 Pair("user2@heig-vd.ch","abcd")
                             )
 
-    // le modifieur lateinit permet de définir des variables avec un type non-null
-    // sans pour autant les initialiser immédiatement
-    private lateinit var email: EditText
-    private lateinit var password: EditText
-    private lateinit var cancelButton: Button
-    private lateinit var validateButton: Button
-    private lateinit var newAccount: TextView
-
-    val LAUNCH_NEWACCOUNT_ACTIVITY = 1
-
-
     var launchRegisterActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val data: Intent? = result.data
             val newEmail = data?.getStringExtra("email")
             val newPassword = data?.getStringExtra("password")
             credentials.add(Pair(newEmail, newPassword) as Pair<String, String>)
-            // your operation...
         }
     }
 
@@ -51,42 +40,34 @@ class MainActivity : AppCompatActivity() {
         // on définit le layout à utiliser pour l'affichage
         setContentView(R.layout.activity_main)
 
-        // on va maintenant lier le code avec les éléments graphiques (champs texts, boutons, etc.)
-        // présents dans le layout (nous allons utiliser l'id défini dans le layout, le cast est
-        // réalisé automatiquement)
-        email = findViewById(R.id.main_email)
-        password = findViewById(R.id.main_password)
-        cancelButton = findViewById(R.id.main_cancel)
-        validateButton = findViewById(R.id.main_validate)
-        newAccount = findViewById(R.id.main_new_account)
         // Kotlin, au travers des Android Kotlin Extensions permet d'automatiser encore plus cette
         // étape en créant automatiquement les variables pour tous les éléments graphiques présents
         // dans le layout et disposant d'un id
         // cf. https://medium.com/@temidjoy/findviewbyid-vs-android-kotlin-extensions-7db3c6cc1d0a
 
         //mise en place des événements
-        cancelButton.setOnClickListener {
+        main_cancel.setOnClickListener {
             //on va vider les champs de la page de login lors du clique sur le bouton Cancel
-            email.text?.clear()
-            password.text?.clear()
+            main_email.text?.clear()
+            main_password.text?.clear()
             // on annule les éventuels messages d'erreur présents sur les champs de saisie
-            email.error = null
-            password.error = null
+            main_email.error = null
+            main_password.error = null
         }
 
-        newAccount.setOnClickListener {
+        main_new_account.setOnClickListener {
             val intent = Intent(this, NewAccountActivity::class.java)
             launchRegisterActivity.launch(intent)
         }
 
-        validateButton.setOnClickListener {
+        main_validate.setOnClickListener {
             //on réinitialise les messages d'erreur
-            email.error = null
-            password.error = null
+            main_email.error = null
+            main_password.error = null
 
             //on récupère le contenu de deux champs dans des variables de type String
-            val emailInput = email.text?.toString()
-            val passwordInput = password.text?.toString()
+            val emailInput = main_email.text?.toString()
+            val passwordInput = main_password.text?.toString()
 
             if(emailInput.isNullOrEmpty() or passwordInput.isNullOrEmpty()) {
                 // on affiche un message dans les logs de l'application
@@ -95,9 +76,9 @@ class MainActivity : AppCompatActivity() {
                 // la méthode getString permet de charger un String depuis les ressources de
                 // l'application à partir de son id
                 if(emailInput.isNullOrEmpty())
-                    email.error = getString(R.string.main_mandatory_field)
+                    main_email.error = getString(R.string.main_mandatory_field)
                 if(passwordInput.isNullOrEmpty())
-                    password.error = getString(R.string.main_mandatory_field)
+                    main_password.error = getString(R.string.main_mandatory_field)
                 // Pour les fonctions lambda, on doit préciser à quelle fonction l'appel à return
                 // doit être appliqué
                 return@setOnClickListener
@@ -108,6 +89,7 @@ class MainActivity : AppCompatActivity() {
                 toast.show()
                 return@setOnClickListener
             }
+
             if (!credentials.contains(Pair(emailInput, passwordInput)))
             {
                 val alertDialogBuilder = AlertDialog.Builder(this)
@@ -126,24 +108,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
-    /*
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == LAUNCH_NEWACCOUNT_ACTIVITY) {
-            if (resultCode == RESULT_OK) {
-                val newEmail = data?.getStringExtra("email")
-                val newPassword = data?.getStringExtra("password")
-                credentials.add(Pair(newEmail, newPassword) as Pair<String, String>)
-            }
-            if (resultCode == RESULT_CANCELED) {
-                // Write your code if there's no result
-            }
-        }
-    } //onActivityResult
-    */
 
     // En Kotlin, les variables static ne sont pas tout à fait comme en Java
     // pour des raison de lisibilité du code, les variables et méthodes static
