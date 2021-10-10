@@ -14,7 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : SuperActivity() {
 
     // on définit une liste de couples e-mail / mot de passe
     // ceci est fait juste pour simplifier ce premier laboratoire,
@@ -37,8 +37,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         // l'appel à la méthode onCreate de la super classe est obligatoire
         super.onCreate(savedInstanceState)
-        // log pour signaler l'appel à la méthode "onCreate"
-        Log.i(TAG, "onCreate Called");
         // on définit le layout à utiliser pour l'affichage
         setContentView(R.layout.activity_main)
 
@@ -115,30 +113,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.i(TAG, "onStart Called");
+    override fun getTag(): String {
+        return TAG
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.i(TAG, "onResume Called");
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.i(TAG, "onPause Called");
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.i(TAG, "onStop Called");
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i(TAG, "onDestroy Called");
-    }
 
     // En Kotlin, les variables static ne sont pas tout à fait comme en Java
     // pour des raison de lisibilité du code, les variables et méthodes static
