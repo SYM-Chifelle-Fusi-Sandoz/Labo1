@@ -1,15 +1,10 @@
 package ch.heigvd.iict.sym.labo1
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -83,11 +78,15 @@ class MainActivity : SuperActivity() {
                 // doit être appliqué
                 return@setOnClickListener
             }
-
+/*
             //Si le format de l'email est invalide, lance le toast avec le message d'erreur
             if (emailInput?.contains('@') == false) {
                 val toast = Toast.makeText(applicationContext, getString(R.string.toast_email_error), Toast.LENGTH_SHORT)
                 toast.show()
+                return@setOnClickListener
+            }*/
+
+            if (!Utility.isEmailOk(applicationContext, emailInput, getString(R.string.toast_email_error))) {
                 return@setOnClickListener
             }
 
