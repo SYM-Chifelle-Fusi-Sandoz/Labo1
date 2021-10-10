@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         // l'appel à la méthode onCreate de la super classe est obligatoire
         super.onCreate(savedInstanceState)
         // log pour signaler l'appel à la méthode "onCreate"
-        Log.i("MainActivity", "onCreate Called");
+        Log.i(TAG, "onCreate Called");
         // on définit le layout à utiliser pour l'affichage
         setContentView(R.layout.activity_main)
 
@@ -113,6 +113,31 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i(TAG, "onStart Called");
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i(TAG, "onResume Called");
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i(TAG, "onPause Called");
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i(TAG, "onStop Called");
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(TAG, "onDestroy Called");
     }
 
     // En Kotlin, les variables static ne sont pas tout à fait comme en Java

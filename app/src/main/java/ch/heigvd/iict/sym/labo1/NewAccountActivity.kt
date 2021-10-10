@@ -40,4 +40,33 @@ class NewAccountActivity : AppCompatActivity(){
             finish()
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i(TAG, "onStart Called");
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i(TAG, "onResume Called");
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i(TAG, "onPause Called");
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i(TAG, "onStop Called");
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(TAG, "onDestroy Called");
+    }
+
+    companion object {
+        private const val TAG: String = "NewAccountActivity"
+    }
 }
