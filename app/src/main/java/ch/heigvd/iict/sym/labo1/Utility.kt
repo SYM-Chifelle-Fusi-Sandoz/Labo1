@@ -1,7 +1,6 @@
 package ch.heigvd.iict.sym.labo1
 
 import android.content.Context
-import android.content.res.Resources
 import android.widget.Toast
 
 class Utility {

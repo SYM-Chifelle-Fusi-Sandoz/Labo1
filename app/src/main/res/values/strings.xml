@@ -11,5 +11,6 @@
     <string name="toast_email_error">Email is invalid</string>
     <string name="dialog_invalid_credentials_title">Invalid credentials</string>
     <string name="dialog_invalid_credentials_error">The credentials you entered are invalid</string>
+    <string name="new_account">Enter your new account</string>
 
 </resources>
