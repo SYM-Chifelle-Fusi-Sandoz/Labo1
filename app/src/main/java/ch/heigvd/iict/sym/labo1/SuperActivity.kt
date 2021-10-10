@@ -36,6 +36,4 @@ abstract class SuperActivity : AppCompatActivity(){
     }
 
     abstract fun getTag(): String?
-
-
 }

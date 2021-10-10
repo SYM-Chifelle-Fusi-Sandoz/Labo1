@@ -78,13 +78,6 @@ class MainActivity : SuperActivity() {
                 // doit être appliqué
                 return@setOnClickListener
             }
-/*
-            //Si le format de l'email est invalide, lance le toast avec le message d'erreur
-            if (emailInput?.contains('@') == false) {
-                val toast = Toast.makeText(applicationContext, getString(R.string.toast_email_error), Toast.LENGTH_SHORT)
-                toast.show()
-                return@setOnClickListener
-            }*/
 
             if (!Utility.isEmailOk(applicationContext, emailInput, getString(R.string.toast_email_error))) {
                 return@setOnClickListener

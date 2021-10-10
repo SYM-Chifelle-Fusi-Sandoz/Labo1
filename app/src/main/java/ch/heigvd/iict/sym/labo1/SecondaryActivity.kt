@@ -12,14 +12,15 @@ class SecondaryActivity : SuperActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // log pour signaler l'appel à la méthode "onCreate"
-
         setContentView(R.layout.activity_secondary)
+
+        //on récupère les information envoyer et on affiche l'email
         val bundle = intent.extras
         if (bundle != null) {
             email.text = bundle.getString("emailInput")
         }
 
+        //on telecharge l'image sur internet
         ImageDownloader(connected_image, "https://thispersondoesnotexist.com/image").show()
     }
 

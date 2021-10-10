@@ -12,16 +12,16 @@ class NewAccountActivity : SuperActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // log pour signaler l'appel à la méthode "onCreate"
-
         setContentView(R.layout.new_account)
 
         new_validate.setOnClickListener {
             if (Utility.isEmailOk(applicationContext, new_email.text?.toString(), getString(R.string.toast_email_error))) {
+                //preparation des données a renvoyer
                 val intent = Intent(this, MainActivity::class.java).apply {
                     putExtra("email", new_email.text?.toString())
                     putExtra("password", new_password.text?.toString())
                 }
+                //on fixe le code de retour et les données
                 setResult(Activity.RESULT_OK, intent)
                 finish()
             } else {
@@ -30,6 +30,7 @@ class NewAccountActivity : SuperActivity(){
         }
 
         new_cancel.setOnClickListener {
+            //on fixe le code de retour et les données
             setResult(Activity.RESULT_CANCELED, null)
             finish()
         }
