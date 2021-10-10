@@ -3,6 +3,7 @@ package ch.heigvd.iict.sym.labo1
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -13,6 +14,9 @@ class NewAccountActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // log pour signaler l'appel à la méthode "onCreate"
+        Log.i("NewAccountActivity", "onCreate Called");
 
         setContentView(R.layout.new_account)
 

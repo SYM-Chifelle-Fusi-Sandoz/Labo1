@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         // l'appel à la méthode onCreate de la super classe est obligatoire
         super.onCreate(savedInstanceState)
+        // log pour signaler l'appel à la méthode "onCreate"
+        Log.i("MainActivity", "onCreate Called");
         // on définit le layout à utiliser pour l'affichage
         setContentView(R.layout.activity_main)
 
